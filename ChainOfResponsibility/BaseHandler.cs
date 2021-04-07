@@ -19,15 +19,14 @@ namespace ChainOfResponsibility
 
         public virtual object Handle(object request)
         {
-            try
+            if (this._nextHandler != null)
             {
                 return this._nextHandler.Handle(request);
             }
-            catch (NullReferenceException)
+            else
             {
                 return null;
             }
-
         }
     }
 }
