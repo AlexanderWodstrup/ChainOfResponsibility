@@ -6,10 +6,27 @@ using System.Threading.Tasks;
 
 namespace ChainOfResponsibility
 {
-    public abstract class BaseHandler
+    abstract class BaseHandler
     {
-        private object request;
-        //public void handleNext();
-        //public void handleRequest();
+        private BaseHandler _nextHandler;
+
+        public BaseHandler SetNext(BaseHandler handler)
+        {
+            this._nextHandler = handler;
+
+            return handler;
+        }
+
+        public virtual object Handle(Mail request)
+        {
+            if (this._nextHandler != null)
+            {
+                return this._nextHandler.Handle(request);
+            }
+            else
+            {
+                return null;
+            }
+        }
     }
 }
