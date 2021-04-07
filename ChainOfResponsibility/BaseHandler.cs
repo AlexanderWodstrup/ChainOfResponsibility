@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace ChainOfResponsibility
 {
-    abstract class BaseHandler : IHandler
+    abstract class BaseHandler
     {
-        private IHandler _nextHandler;
+        private BaseHandler _nextHandler;
 
-        public IHandler SetNext(IHandler handler)
+        public BaseHandler SetNext(BaseHandler handler)
         {
             this._nextHandler = handler;
 
