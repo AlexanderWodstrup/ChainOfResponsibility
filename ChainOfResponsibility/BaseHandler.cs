@@ -17,7 +17,7 @@ namespace ChainOfResponsibility
             return handler;
         }
 
-        public virtual object Handle(object request)
+        public virtual object Handle(Mail request)
         {
             if (this._nextHandler != null)
             {

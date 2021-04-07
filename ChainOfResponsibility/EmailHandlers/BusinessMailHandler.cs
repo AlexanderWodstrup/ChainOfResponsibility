@@ -4,15 +4,15 @@ namespace ChainOfResponsibility.EmailHandlers
 {
     class BusinessMailHandler : BaseHandler
     {
-        public override object Handle(object request)
+        public override object Handle(Mail request)
         {
-            if (request.ToString() == "Business mail")
+            if (request.Type == "Business mail")
             {
-                return $"{request.ToString()} detected - sending to CEO\n";
+                return $"Mail: {request.Type} detected - sending to CEO\n";
             }
             else
             {
-                Console.WriteLine($"BusinessHandler can't handle {request.ToString()}");
+                Console.WriteLine($"BusinessHandler can't handle mail: {request.Type}");
                 return base.Handle(request);
             }
         }

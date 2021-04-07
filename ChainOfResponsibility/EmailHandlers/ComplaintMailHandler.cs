@@ -4,15 +4,15 @@ namespace ChainOfResponsibility.EmailHandlers
 {
     class ComplaintMailHandler : BaseHandler
     {
-        public override object Handle(object request)
+        public override object Handle(Mail request)
         {
-            if (request.ToString() == "Complaint mail")
+            if (request.Type == "Complaint mail")
             {
-                return $"{request.ToString()} detected - sending to Q/A department\n";
+                return $"{request.Type} detected - sending to Q/A department\n";
             }
             else
             {
-                Console.WriteLine($"ComplaintHandler can't handle {request.ToString()}");
+                Console.WriteLine($"ComplaintHandler can't handle {request.Type}");
                 return base.Handle(request);
             }
         }

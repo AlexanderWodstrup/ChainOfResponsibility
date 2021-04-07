@@ -5,9 +5,9 @@ namespace ChainOfResponsibility
 {
     class MailClient
     {
-        public static void MailClientRequest(BaseHandler handler, string mail)
+        public static void MailClientRequest(BaseHandler handler, Mail mail)
         {
-                Console.WriteLine($"Client: Who wants a {mail}?");
+                Console.WriteLine($"Client: Who wants a {mail.Type}?");
 
                 var result = handler.Handle(mail);
 
@@ -17,7 +17,7 @@ namespace ChainOfResponsibility
                 }
                 else
                 {
-                    Console.WriteLine($"   {mail} was not handled.");
+                    Console.WriteLine($"   {mail.Type} was not handled.");
                 }
         }
     }

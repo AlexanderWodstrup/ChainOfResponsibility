@@ -4,16 +4,17 @@ namespace ChainOfResponsibility.EmailHandlers
 {
     class SpamMailHandler : BaseHandler
     {
-        public override object Handle(object request)
+        public override object Handle(Mail request)
         {
             
-            if (request.ToString() == "Spam mail")
+            if (request.Type == "Spam mail")
             {
-                return $"{request.ToString()} detected - deleting mail\n";
+                return $"{request.Type} detected - inserting mail into spam folder\n";
             }
             else
             {
-                Console.WriteLine($"SpamHandler can't handle {request.ToString()}");
+                Console.WriteLine($"SpamHandler can't handle {request.Type}");
+                
                 return base.Handle(request);
             }
         }
