@@ -6,10 +6,28 @@ using System.Threading.Tasks;
 
 namespace ChainOfResponsibility
 {
-    public abstract class BaseHandler
+    abstract class BaseHandler : IHandler
     {
-        private object request;
-        //public void handleNext();
-        //public void handleRequest();
+        private IHandler _nextHandler;
+
+        public IHandler SetNext(IHandler handler)
+        {
+            this._nextHandler = handler;
+
+            return handler;
+        }
+
+        public virtual object Handle(object request)
+        {
+            try
+            {
+                return this._nextHandler.Handle(request);
+            }
+            catch (NullReferenceException)
+            {
+                return null;
+            }
+
+        }
     }
 }
