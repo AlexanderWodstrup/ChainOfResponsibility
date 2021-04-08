@@ -8,7 +8,7 @@ namespace ChainOfResponsibility.EmailHandlers
         {
             if (request.Type == "Business mail")
             {
-                return $"Mail: {request.Type} detected - sending to CEO\n";
+                return $"{request.Type} detected - sending to CEO\n";
             }
             else
             {

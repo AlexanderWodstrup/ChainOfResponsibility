@@ -8,8 +8,7 @@ namespace ChainOfResponsibility
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
-
+            
             Mail skatMail = new Mail()
             {
                 ReceiverList = new List<string>() {"testMail@gmail.dk"},
