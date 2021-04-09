@@ -2,6 +2,12 @@
 using System.Collections.Generic;
 using ChainOfResponsibility.EmailHandlers;
 
+// Gruppe 21.
+// Alexander Flarup Wodstrup - au604638
+// Patrick Nielsen - au602695
+// Peter Wann - au651084
+// August Hjerrild Andersen - au650568
+
 namespace ChainOfResponsibility
 {
     class Program
@@ -35,8 +41,7 @@ namespace ChainOfResponsibility
                 Message = "Du skylder 27.000 kr i licens penge",
                 Type = "Vigtig mail"
             };
-
-
+            
             // The other part of the client code constructs the actual chain.
             var business = new BusinessMailHandler();
             var complaint = new ComplaintMailHandler();
@@ -51,7 +56,7 @@ namespace ChainOfResponsibility
             MailClient.MailClientRequest(spam, spamMail);
             Console.WriteLine();
 
-            Console.WriteLine("Subchain: Job > Complaint\n");
+            Console.WriteLine("Subchain: Business > Job > Complaint\n");
             MailClient.MailClientRequest(business, skatMail);
             Console.WriteLine();
 

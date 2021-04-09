@@ -6,7 +6,7 @@ namespace ChainOfResponsibility.EmailHandlers
     {
         public override object Handle(Mail request)
         {
-            if (request.ToString() == "Job Application mail")
+            if (request.Type == "Job Application mail")
             {
                 return $"{request.Type} detected - sending to H/R department\n";
             }
